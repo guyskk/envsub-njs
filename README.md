@@ -21,7 +21,8 @@ location ^~ /api {
 ```Dockerfile
 FROM nginx:stable-alpine
 
-RUN curl -L https://github.com/guyskk/envsub-njs/releases/download/v0.1.0/envsub-njs.sh -o /usr/local/bin/envsub-njs && chmod +x /usr/local/bin/envsub-njs
+RUN curl -L https://raw.githubusercontent.com/guyskk/envsub-njs/main/envsub-njs.sh \
+    -o /usr/local/bin/envsub-njs && chmod +x /usr/local/bin/envsub-njs
 
 RUN echo '/usr/local/bin/envsub-njs /etc/nginx/nginx.conf' \
         > /docker-entrypoint.d/01-envsub-njs-nginx.sh && \
